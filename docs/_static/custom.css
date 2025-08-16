@@ -7,9 +7,9 @@
 
 :root {
   /* Professional blue palette matching SplendidCube branding */
-  --splendidcube-primary: #1e3a8a;      /* Deep navy blue for headers */
-  --splendidcube-secondary: #3b82f6;    /* Medium blue for accents */
-  --splendidcube-text: #1f2937;         /* Dark text for readability */
+  --splendidcube-primary: #1e3a8a; /* Deep navy blue for headers */
+  --splendidcube-secondary: #3b82f6; /* Medium blue for accents */
+  --splendidcube-text: #1f2937; /* Dark text for readability */
 }
 
 /* ================================================================
@@ -83,7 +83,8 @@ code {
 pre .l,     /* Literals */
 pre .s,     /* Strings */
 pre .s1,    /* String single quote */
-pre .s2 {   /* String double quote */
+pre .s2 {
+  /* String double quote */
   color: #dc2626 !important; /* Dark red instead of light orange */
 }
 
@@ -91,43 +92,51 @@ pre .n,     /* Names */
 pre .nb,    /* Name builtin */
 pre .nc,    /* Name class */
 pre .nf,    /* Name function */
-pre .nt {   /* Name tag */
+pre .nt {
+  /* Name tag */
   color: #1f2937 !important; /* Dark grey for names */
 }
 
 pre .k,     /* Keywords */
 pre .kn,    /* Keyword namespace */
-pre .kc {   /* Keyword constant */
+pre .kc {
+  /* Keyword constant */
   color: #7c3aed !important; /* Dark purple for keywords */
 }
 
 pre .m,     /* Numbers */
 pre .mi,    /* Number integer */
-pre .mf {   /* Number float */
+pre .mf {
+  /* Number float */
   color: #b45309 !important; /* Dark orange for numbers */
 }
 
 pre .c,     /* Comments */
 pre .c1,    /* Comment single line */
-pre .cm {   /* Comment multiline */
+pre .cm {
+  /* Comment multiline */
   color: #6b7280 !important; /* Medium grey for comments */
   font-style: italic !important;
 }
 
 pre .o,     /* Operators */
-pre .ow {   /* Operator word */
+pre .ow {
+  /* Operator word */
   color: #059669 !important; /* Dark green for operators */
 }
 
-pre .p {    /* Punctuation */
+pre .p {
+  /* Punctuation */
   color: #374151 !important; /* Dark grey for punctuation */
 }
 
-pre .bp {   /* Name builtin pseudo */
+pre .bp {
+  /* Name builtin pseudo */
   color: #4f46e5 !important; /* Dark blue for built-ins */
 }
 
-pre .err {  /* Error */
+pre .err {
+  /* Error */
   color: #dc2626 !important; /* Dark red for errors */
   background-color: #fef2f2 !important; /* Light red background */
 }
@@ -248,5 +257,7 @@ a {
 
 a:hover {
   color: var(--splendidcube-secondary) !important;
-  text-decoration-color: var(--splendidcube-secondary) !important; /* Blue underline on hover */
+  text-decoration-color: var(
+    --splendidcube-secondary
+  ) !important; /* Blue underline on hover */
 }

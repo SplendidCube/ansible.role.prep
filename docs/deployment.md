@@ -1,6 +1,6 @@
 # Deployment and Development Process
 
-This document describes the development workflow and deployment process for `[PROJECT_NAME]`, including setup, quality assurance, and technology-specific procedures.
+This document describes the development workflow and deployment process for `ansible.role.prep`, including setup, quality assurance, and technology-specific procedures.
 
 ## Overview
 
@@ -18,17 +18,17 @@ The development process uses:
 ### 1. Initial Setup
 
 1. **Clone repository**: `git clone <repository-url>`
-2. **Initialize environment**: `make init`
-3. **Install pre-commit hooks**: `make pre-commit-install`
-4. **Verify setup**: `make quality`
+1. **Initialize environment**: `make init`
+1. **Install pre-commit hooks**: `make pre-commit-install`
+1. **Verify setup**: `make quality`
 
 ### 2. Development Process
 
 1. **Create feature branch**: `git checkout -b feature/description`
-2. **Make changes**: Edit code, tests, documentation
-3. **Run quality checks**: `make quality` (includes lint, format, test)
-4. **Commit changes**: Follow conventional commit format
-5. **Push and create PR**: Standard GitHub workflow
+1. **Make changes**: Edit code, tests, documentation
+1. **Run quality checks**: `make quality` (includes lint, format, test)
+1. **Commit changes**: Follow conventional commit format
+1. **Push and create PR**: Standard GitHub workflow
 
 ### 3. Quality Assurance
 
@@ -78,40 +78,6 @@ poetry add --group dev tool   # Add dev dependency
 poetry shell                  # Activate environment
 ```
 
-### Rust Projects
-
-```bash
-# Initialize Rust environment
-make init  # cargo fetch, tool installation
-
-# Quality checks
-make lint      # cargo clippy
-make format    # cargo fmt
-make test      # cargo test
-
-# Development
-cargo add dependency        # Add dependency
-cargo build                 # Build project
-cargo run                   # Run project
-```
-
-### JavaScript/TypeScript Projects
-
-```bash
-# Initialize Node.js environment
-make init  # npm/yarn install
-
-# Quality checks
-make lint      # ESLint
-make format    # Prettier
-make test      # Jest/Vitest
-
-# Development
-npm install package        # Add dependency
-npm run dev                # Development server
-npm run build              # Production build
-```
-
 ## Commit Message Format
 
 All commits must follow the conventional format:
@@ -155,9 +121,9 @@ GitHub Actions workflow (`validation.yml`) runs on every push:
 ### Common Issues
 
 1. **Pre-commit fails**: Run `make pre-commit-run` to see specific errors
-2. **Dependencies outdated**: Technology-specific update commands
-3. **Tests failing**: Check test output, update fixtures if needed
-4. **Documentation build fails**: Check Sphinx configuration and MyST syntax
+1. **Dependencies outdated**: Technology-specific update commands
+1. **Tests failing**: Check test output, update fixtures if needed
+1. **Documentation build fails**: Check Sphinx configuration and MyST syntax
 
 ### Technology-Specific Troubleshooting
 
