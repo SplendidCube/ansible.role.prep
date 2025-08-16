@@ -6,14 +6,14 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "[PROJECT_NAME]"
+name = "ansible.role.prep"
 version = "0.1.0"
-description = "[Brief description of the project]"
+description = "Ansible Role for preparing Troposphere/CloudFormation deployment Workflows"
 readme = "README.md"
 authors = ["SplendidCube"]
 license = "Proprietary"
 package-mode = false
-keywords = ["[keyword1]", "[keyword2]", "[keyword3]"]
+keywords = ["ansible", "troposphere", "cloudformation", "aws", "infrastructure"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -22,13 +22,22 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Systems Administration",
+    "Environment :: No Input/Output (Daemon)",
     "Natural Language :: English",
+]
+packages = [
+    {include = "helpers"},
+    {include = "library"}
 ]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-
-# Add project-specific dependencies here
+ansible = "*"
+troposphere = "*"
+pepper8 = "*"
+grappa = "*"
+stringcase = "^1.2.0"
 
 [tool.poetry.group.dev.dependencies]
 # Core development tools
@@ -100,7 +109,7 @@ skips = ["B101"]  # Skip assert_used test
 [tool.pytest.ini_options]
 minversion = "7.0"
 addopts = "-ra -q --strict-markers --strict-config --cov-report=term-missing"
-testpaths = ["tests"]
+testpaths = ["library/tests", "tests"]
 python_files = ["test_*.py", "*_test.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]

@@ -4,8 +4,8 @@
 
 repository:
   # Repository basic settings
-  name: "template.ansible.role"
-  description: "Template for all SplendidCube Ansible Roles "
+  name: "ansible.role.prep"
+  description: "Ansible Role for preparing Troposphere/CloudFormation deployment Workflows"
   homepage: ""
   topics:
     - template
@@ -15,7 +15,7 @@ repository:
 
   # Repository features
   private: true
-  is_template: true
+  is_template: false
   has_issues: false
   has_projects: false
   has_wiki: false

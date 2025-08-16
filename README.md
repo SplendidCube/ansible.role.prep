@@ -1,18 +1,18 @@
-# Project Name
+# ansible.role.prep
 
-Ansible role template for SplendidCube infrastructure automation
+Ansible preparation role for AWS infrastructure automation
 
 ## Overview
 
-This Ansible role provides [role-specific functionality description]. It serves as a [foundational/specialized/utility] role for [specific use case or infrastructure components].
+This Ansible role provides initial preparation and capability delivery for AWS infrastructure automation. It serves as a foundational role that should be included first in any playbook requiring AWS infrastructure provisioning.
 
 ## Prerequisites
 
 - Python 3.11+
 - AWS CLI configured with appropriate credentials (if AWS-related)
 - Make
-- Ansible 2.9+ (`pip install ansible` or system package manager)
-- [Additional role-specific prerequisites]
+- Ansible 2.9+ (via package manager or virtual environment)
+- Troposphere Python package (managed via Poetry)
 
 ## Quick Start
 
@@ -21,8 +21,8 @@ This Ansible role provides [role-specific functionality description]. It serves 
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
-   cd <project-name>
+   git clone https://github.com/SplendidCube/ansible.role.prep.git
+   cd ansible.role.prep
    ```
 
 1. Initialize the development environment:
@@ -71,12 +71,14 @@ make clean             # Clean up environment
 ├── defaults/                # Default variables
 ├── templates/               # Jinja2 templates (if needed)
 ├── files/                   # Static files (if needed)
-├── library/                 # Custom Ansible modules (if needed)
+├── library/                 # Custom Ansible modules
 │   ├── [custom_module].py   # Custom modules
+│   ├── model_generate.py    # Main module for executing custom models
 │   └── tests/               # Unit tests for modules
-├── helpers/                 # Helper classes for module development (if needed)
+├── helpers/                 # Helper classes for module development
 │   ├── base_model.py        # Generic base class for custom models
-│   └── [specific_helper].py # Specialized helper classes
+│   ├── [specific_helper].py # Specialized helper classes
+│   └── troposphere_core.py  # CloudFormation template generation class
 ├── meta/                    # Ansible Galaxy metadata
 │   └── main.yml             # Role metadata and dependencies
 ├── docs/                    # Sphinx documentation
@@ -88,23 +90,26 @@ make clean             # Clean up environment
 
 ## Capabilities
 
-This template provides the following key capabilities:
+This role provides the following key capabilities:
 
-1. **[Primary Capability]**: [Description of main functionality]
-1. **[Secondary Capability]**: [Description of additional functionality]
-1. **[Additional Features]**: [Any special features or integrations]
+1. **Infrastructure Preparation**: Automatic checks and validation before infrastructure deployment
+2. **Custom Model Execution**: The `model_generate` module for executing custom Python models within Ansible
+3. **Dynamic Path Management**: Adds the role directory to Python path for seamless module imports
+4. **AWS Session Validation**: Ensures proper AWS credentials and session setup
+5. **CloudFormation Integration**: Specialized support for Troposphere-based template generation
 
 ## Usage
 
 ### Basic Role Integration
 
-Include the role in your playbook:
+Include the role in your playbook. Ensure the prepare role is the **first role** used by the playbook before any tasks are defined:
 
 ```yaml
 ---
 - hosts: [target_hosts]
   roles:
-    - [role_name]
+    - ansible.role.prep  # Must be first
+    - other.roles
   vars:
     # Role-specific variables
 ```
@@ -113,18 +118,20 @@ Include the role in your playbook:
 
 Key variables that can be configured:
 
-| Variable          | Default           | Description   |
-| ----------------- | ----------------- | ------------- |
-| `[variable_name]` | `[default_value]` | [Description] |
+| Variable                   | Default | Description                                    |
+| -------------------------- | ------- | ---------------------------------------------- |
+| `aws_require_assumed_role` | `true`  | Require AWS role assumption for authentication |
 
-### Custom Modules (if applicable)
+### Custom Modules
 
-If the role includes custom modules, document their usage:
+The role includes the `model_generate` custom module:
 
 ```yaml
-- [module_name]:
-    parameter: value
-    description: "Module description"
+- model_generate:
+    model: models/my_model
+    description: My model
+    parameters:
+      param1: var1
 ```
 
 ### Advanced Configuration
@@ -135,10 +142,12 @@ For different environments:
 
 ```yaml
 # Development
-[role_name]_environment: dev
+ansible_role_prep_environment: dev
+aws_require_assumed_role: false  # bypass AWS authentication
 
-# Production
-[role_name]_environment: prod
+# Production  
+ansible_role_prep_environment: prod
+aws_require_assumed_role: true   # require role assumption
 ```
 
 ## Contributing
