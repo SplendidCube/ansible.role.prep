@@ -1,3 +1,4 @@
+---
 # GitHub Repository Settings
 # This file configures repository settings via the GitHub Settings app
 # https://github.com/apps/settings
@@ -47,7 +48,6 @@ branches:
       required_status_checks:
         strict: true
         contexts: []
-
       # Restrictions
       enforce_admins: false
       allow_force_pushes: false
@@ -70,7 +70,6 @@ branches:
       required_status_checks:
         strict: false
         contexts: []
-
       # Restrictions
       enforce_admins: false
       allow_force_pushes: true

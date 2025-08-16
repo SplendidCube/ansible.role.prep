@@ -86,11 +86,14 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 # Allow unused imports in __init__.py files
-"__init__.py" = ["F401"]
+"__init__.py" = ["F401", "N999"]  # N999: Invalid module name
 # Allow print statements and assert in scripts and tests
 "scripts/*.py" = ["T201", "S101"]
-"tests/*.py" = ["S101", "ARG001", "S106"]
-"**/tests/**/*.py" = ["S101", "ARG001", "S106"]
+"tests/*.py" = ["S101", "ARG001", "S106", "S108", "ARG002", "N999"]
+"**/tests/**/*.py" = ["S101", "ARG001", "S106", "S108", "ARG002", "N999"]
+"**/fixtures/*.py" = ["ARG002", "F401"]  # Unused arguments and imports in test fixtures
+"helpers/*.py" = ["N999"]  # Allow module naming in helpers
+"library/*.py" = ["N999"]  # Allow module naming in library
 
 [tool.ruff.format]
 # Use double quotes for strings
@@ -108,8 +111,9 @@ skips = ["B101"]  # Skip assert_used test
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "-ra -q --strict-markers --strict-config --cov-report=term-missing"
+addopts = "-ra -q --strict-markers --strict-config"
 testpaths = ["library/tests", "tests"]
+pythonpath = ["."]
 python_files = ["test_*.py", "*_test.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]

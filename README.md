@@ -64,28 +64,36 @@ make clean             # Clean up environment
 ## Project Structure
 
 ```text
-├── tasks/                   # Ansible role tasks
-│   └── main.yml             # Main role tasks
-├── handlers/                # Ansible handlers (if needed)
-├── vars/                    # Role variables
-├── defaults/                # Default variables
-├── templates/               # Jinja2 templates (if needed)
-├── files/                   # Static files (if needed)
-├── library/                 # Custom Ansible modules
-│   ├── [custom_module].py   # Custom modules
-│   ├── model_generate.py    # Main module for executing custom models
-│   └── tests/               # Unit tests for modules
-├── helpers/                 # Helper classes for module development
-│   ├── base_model.py        # Generic base class for custom models
-│   ├── [specific_helper].py # Specialized helper classes
-│   └── troposphere_core.py  # CloudFormation template generation class
-├── meta/                    # Ansible Galaxy metadata
-│   └── main.yml             # Role metadata and dependencies
-├── docs/                    # Sphinx documentation
-│   ├── index.md             # Documentation entry point
-│   ├── project-structure.md # Project structure guide
-│   └── deployment.md        # Role usage and deployment guide
-└── makefile                 # Development automation targets
+ansible.role.prep/
+├── tasks/                    # Ansible role tasks
+│   └── main.yml              # Main role tasks
+├── handlers/                 # Ansible handlers (if needed)
+├── vars/                     # Role variables
+├── defaults/                 # Default variables
+├── templates/                # Jinja2 templates (if needed)
+├── files/                    # Static files (if needed)
+├── library/                  # Custom Ansible modules
+│   ├── generate_model.py     # Main module for executing custom models
+│   └── [custom_module].py    # Additional custom modules
+├── helpers/                  # Python helper classes
+│   ├── aws_resource_model.py # Base class for AWS resource models
+│   ├── cfn_builder.py        # CloudFormation template builder
+│   └── [specific_helper].py  # Specialized helper classes
+├── tests/                    # Test suite (pytest structure)
+│   ├── library/              # Tests for custom Ansible modules
+│   ├── helpers/              # Tests for helper classes
+│   └── fixtures/             # Test fixtures and sample data
+├── docs/                     # Documentation
+│   ├── index.md              # Documentation entry point
+│   ├── project-structure.md  # Project structure guide
+│   └── deployment.md         # Role usage and deployment guide
+├── meta/                     # Ansible Galaxy metadata
+│   └── main.yml              # Role metadata and dependencies
+├── pyproject.toml            # Python project configuration
+├── __init__.py               # Python package marker
+├── LICENSE                   # Project license
+├── README.md                 # This file
+└── makefile                  # Development automation targets
 ```
 
 ## Capabilities
@@ -93,10 +101,10 @@ make clean             # Clean up environment
 This role provides the following key capabilities:
 
 1. **Infrastructure Preparation**: Automatic checks and validation before infrastructure deployment
-2. **Custom Model Execution**: The `model_generate` module for executing custom Python models within Ansible
-3. **Dynamic Path Management**: Adds the role directory to Python path for seamless module imports
-4. **AWS Session Validation**: Ensures proper AWS credentials and session setup
-5. **CloudFormation Integration**: Specialized support for Troposphere-based template generation
+1. **Custom Model Execution**: The `generate_model` module for executing custom Python models within Ansible
+1. **Dynamic Path Management**: Adds the role directory to Python path for seamless module imports
+1. **AWS Session Validation**: Ensures proper AWS credentials and session setup
+1. **CloudFormation Integration**: Specialized support for Troposphere-based template generation
 
 ## Usage
 
@@ -124,10 +132,10 @@ Key variables that can be configured:
 
 ### Custom Modules
 
-The role includes the `model_generate` custom module:
+The role includes the `generate_model` custom module:
 
 ```yaml
-- model_generate:
+- generate_model:
     model: models/my_model
     description: My model
     parameters:
@@ -145,7 +153,7 @@ For different environments:
 ansible_role_prep_environment: dev
 aws_require_assumed_role: false  # bypass AWS authentication
 
-# Production  
+# Production
 ansible_role_prep_environment: prod
 aws_require_assumed_role: true   # require role assumption
 ```

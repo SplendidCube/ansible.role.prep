@@ -1,6 +1,36 @@
+---
 # This role contains checks and any preparation required for ansible projects
 - name: Ansible version checking
-  assert:
-    that: ansible_version.full is version_compare({{ ansible_min_version | default('2.14') }}, '>=')
-    fail_msg: Ansible v{{ ansible_min_version | default('2.14') }} or above is required for this playbook, please update.
+  ansible.builtin.assert:
+    that: ansible_version.full is version_compare('{{ ansible_min_version | default("2.14") }}', '>=')
+    fail_msg: 'Ansible v{{ ansible_min_version | default("2.14") }} or above is required for this playbook, please update.'
   tags: always
+
+- name: Verify that an AWS role has been assumed
+  ansible.builtin.assert:
+    that: ( ( aws_require_assumed_role | default(true) ) == true and lookup('env','AWS_SESSION_TOKEN') != "" ) or ( aws_require_assumed_role | default(true) )
+      == false or group_names[0] == "local"
+    fail_msg: You have not assumed into an AWS role, cannot continue
+  tags: always
+
+- name: Check if AWS session is still valid
+  tags: always
+  when:
+    - aws_require_assumed_role | default(true)
+    - not ansible_check_mode
+    - group_names[0] != "local"
+  block:
+    - name: Run check for valid AWS session
+      ansible.builtin.shell: |
+        export PYTHONWARNINGS=ignore
+        aws sts get-caller-identity > /dev/null
+      args:
+        executable: /bin/bash
+      register: awscheck
+      ignore_errors: true
+      changed_when: false
+
+    - name: Stop if AWS session is not valid
+      ansible.builtin.assert:
+        that: awscheck.rc == 0
+        fail_msg: AWS session has expired, please re-assume role

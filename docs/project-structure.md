@@ -13,12 +13,12 @@ ansible.role.prep/
 ├── .pre-commit-config.yaml          # Quality automation hooks
 ├── pyproject.toml                   # Poetry dependencies and configuration
 ├── docs/                            # Sphinx documentation
-│   ├── conf.py
-│   ├── index.md
-│   ├── project-structure.md
-│   ├── deployment.md
-│   ├── _static/
-│   └── _templates/
+│   ├── conf.py                      # Sphinx configuration with SplendidCube branding
+│   ├── index.md                     # Documentation entry point
+│   ├── project-structure.md         # Project structure guide (this file)
+│   ├── deployment.md                # Role usage and deployment guide
+│   ├── _static/                     # Static assets (CSS, images, etc.)
+│   └── _templates/                  # Custom Sphinx templates
 ├── tasks/                           # Ansible role tasks
 │   └── main.yml                     # Main role tasks
 ├── handlers/                        # Ansible handlers
@@ -27,11 +27,11 @@ ansible.role.prep/
 ├── templates/                       # Jinja2 templates
 ├── files/                           # Static files
 ├── library/                         # Custom Ansible modules
-│   ├── model_generate.py            # Main custom module
+│   ├── generate_model.py            # Main custom module
 │   └── tests/                       # Unit tests
 ├── helpers/                         # Helper classes for module development
-│   ├── base_model.py                # Generic base class
-│   └── troposphere_core.py          # CloudFormation template generation
+│   ├── aws_resource_model.py        # AWS resource modeling base class
+│   └── cfn_builder.py               # CloudFormation template generation
 ├── meta/                            # Ansible Galaxy metadata
 │   └── main.yml                     # Role metadata and dependencies
 └── tests/                           # Additional test files

@@ -76,6 +76,14 @@
 - **Security scanning** with Bandit for Python and other security tools
 - **Testing** as a standard requirement with coverage expectations
 - **Documentation** kept up-to-date and relevant
+- **Docstring formatting** with mandatory structural line breaks:
+  - **REQUIRED**: Use triple-quote format with line breaks: `"""\nContent\n"""`
+  - **AVOID**: Inline format without line breaks: `"""Content"""`
+  - **Standard**: reStructuredText (reST) format for optimal Sphinx integration
+  - **Parameters**: Use `:param name: description` and `:type name: TypeName`
+  - **Returns**: Use `:returns: description` and `:rtype: TypeName`
+  - **Examples**: Use `Example::` with proper indentation for code blocks
+  - **No manual line breaks in content**: Let IDE handle wrapping of docstring text naturally
 
 ### File Structure Preferences
 
@@ -137,7 +145,7 @@ docs/                     # Detailed documentation (with SplendidCube branding)
 - **Automatic execution** of preparation tasks on role inclusion
 - **Custom modules** in `library/` directory
 - **Helper classes** in `helpers/` directory for model development
-- **Comprehensive testing** with fixtures in `library/tests/`
+- **Comprehensive testing** with fixtures in `tests/` directory
 - **Galaxy metadata** properly configured in `meta/main.yml`
 
 ### Quality Assurance
@@ -183,6 +191,9 @@ docs/                     # Detailed documentation (with SplendidCube branding)
 - **Suggesting irrelevant tools or alternatives** - stick to established patterns
 - **Recommending tools not explicitly requested** - avoid unsolicited suggestions
 - Breaking established project patterns without clear justification
+- **Inline docstring format** - always use line-break style: `"""\nContent\n"""`
+- **Non-reST docstring formats** - use reStructuredText for Sphinx compatibility
+- **Manual line breaks in docstring content** - let IDE handle natural text wrapping
 
 ## Project-Specific Notes
 
@@ -237,3 +248,7 @@ docs/                     # Detailed documentation (with SplendidCube branding)
 - 2025-08-15: Established GitHub Actions validation.yml workflow for CI/CD consistency
 - 2025-08-15: Added comprehensive VS Code settings for all supported languages
 - 2025-08-16: Integrated comprehensive SplendidCube documentation branding with logo and professional navy blue theme
+- 2025-08-16: Established docstring formatting standards with mandatory line breaks and reST format
+- 2025-08-16: Added code quality best practices for helper classes and abstract base classes
+- 2025-08-16: Implemented systematic class naming improvements (BaseModel→AwsResourceModel, TroposphereCore→CfnBuilder)
+- 2025-08-16: Added comprehensive error handling patterns and type hint standards for Ansible integration

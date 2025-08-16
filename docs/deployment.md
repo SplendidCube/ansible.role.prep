@@ -18,17 +18,17 @@ The development process uses:
 ### 1. Initial Setup
 
 1. **Clone repository**: `git clone <repository-url>`
-2. **Initialize environment**: `make init`
-3. **Install pre-commit hooks**: `make pre-commit-install`
-4. **Verify setup**: `make quality`
+1. **Initialize environment**: `make init`
+1. **Install pre-commit hooks**: `make pre-commit-install`
+1. **Verify setup**: `make quality`
 
 ### 2. Development Process
 
 1. **Create feature branch**: `git checkout -b feature/description`
-2. **Make changes**: Edit code, tests, documentation
-3. **Run quality checks**: `make quality` (includes lint, format, test)
-4. **Commit changes**: Follow conventional commit format
-5. **Push and create PR**: Standard GitHub workflow
+1. **Make changes**: Edit code, tests, documentation
+1. **Run quality checks**: `make quality` (includes lint, format, test)
+1. **Commit changes**: Follow conventional commit format
+1. **Push and create PR**: Standard GitHub workflow
 
 ### 3. Quality Assurance
 
@@ -121,9 +121,9 @@ GitHub Actions workflow (`validation.yml`) runs on every push:
 ### Common Issues
 
 1. **Pre-commit fails**: Run `make pre-commit-run` to see specific errors
-2. **Dependencies outdated**: Technology-specific update commands
-3. **Tests failing**: Check test output, update fixtures if needed
-4. **Documentation build fails**: Check Sphinx configuration and MyST syntax
+1. **Dependencies outdated**: Technology-specific update commands
+1. **Tests failing**: Check test output, update fixtures if needed
+1. **Documentation build fails**: Check Sphinx configuration and MyST syntax
 
 ### Technology-Specific Troubleshooting
 

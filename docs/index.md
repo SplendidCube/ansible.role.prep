@@ -13,9 +13,9 @@ This project provides:
 ## Quick Start
 
 1. **Prerequisites**: Python 3.11+, AWS CLI, Make, Ansible 2.9+, Troposphere
-2. **Initialize Environment**: `make init`
-3. **Run Quality Checks**: `make quality`
-4. **Generate Documentation**: `make docs`
+1. **Initialize Environment**: `make init`
+1. **Run Quality Checks**: `make quality`
+1. **Generate Documentation**: `make docs`
 
 ## Documentation Structure
 
@@ -25,6 +25,7 @@ This project provides:
 
 project-structure
 deployment
+src
 ```
 
 ## Project Information
