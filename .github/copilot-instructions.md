@@ -252,3 +252,4 @@ docs/                     # Detailed documentation (with SplendidCube branding)
 - 2025-08-16: Added code quality best practices for helper classes and abstract base classes
 - 2025-08-16: Implemented systematic class naming improvements (BaseModel→AwsResourceModel, TroposphereCore→CfnBuilder)
 - 2025-08-16: Added comprehensive error handling patterns and type hint standards for Ansible integration
+- 2025-08-16: Improved Sphinx documentation configuration with better URL generation pattern using f"https://github.com/SplendidCube/\{PROJECT_NAME}"

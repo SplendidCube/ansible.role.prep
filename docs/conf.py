@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.abspath(".."))
 
 # -- Template variables for easy customization ------------------------------
 PROJECT_NAME = "ansible.role.prep"
-PROJECT_REPO = "ansible.role.prep"
+PROJECT_REPO = f"https://github.com/SplendidCube/{PROJECT_NAME}"
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -128,5 +128,5 @@ html_theme_options = {
     "logo_height": 60,  # Slightly larger to accommodate the cube design
     "logo_url": "/",
     "logo_width": 56,  # Maintains aspect ratio (522.69/560.21 ≈ 0.93)
-    # "github_url": f"https://github.com/SplendidCube/{PROJECT_REPO}",  # Commented out to hide Edit button
+    "github_url": PROJECT_REPO,  # GitHub repository URL for Edit button
 }
