@@ -1,6 +1,6 @@
 # Deployment and Development Process
 
-This document describes the development workflow and deployment process for `[PROJECT_NAME]`, including setup, quality assurance, and technology-specific procedures.
+This document describes the development workflow and deployment process for `ansible.role.prep`, including setup, quality assurance, and technology-specific procedures.
 
 ## Overview
 
@@ -76,40 +76,6 @@ make test       # pytest
 poetry add package-name       # Add dependency
 poetry add --group dev tool   # Add dev dependency
 poetry shell                  # Activate environment
-```
-
-### Rust Projects
-
-```bash
-# Initialize Rust environment
-make init  # cargo fetch, tool installation
-
-# Quality checks
-make lint      # cargo clippy
-make format    # cargo fmt
-make test      # cargo test
-
-# Development
-cargo add dependency        # Add dependency
-cargo build                 # Build project
-cargo run                   # Run project
-```
-
-### JavaScript/TypeScript Projects
-
-```bash
-# Initialize Node.js environment
-make init  # npm/yarn install
-
-# Quality checks
-make lint      # ESLint
-make format    # Prettier
-make test      # Jest/Vitest
-
-# Development
-npm install package        # Add dependency
-npm run dev                # Development server
-npm run build              # Production build
 ```
 
 ## Commit Message Format
