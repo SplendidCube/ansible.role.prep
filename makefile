@@ -33,6 +33,7 @@ init: ## Initialize development environment
 	else \
 		echo "ℹ️  No dependency files found (pyproject.toml, requirements.txt, package.json)"; \
 	fi
+	@$(MAKE) pre-commit-install
 	@echo "✅ Environment initialization complete!"
 
 install: ## Install dependencies
@@ -95,7 +96,8 @@ ansible-lint: ## Run ansible-lint on role files
 ansible-syntax: ## Check Ansible syntax
 	@echo "🔍 Checking Ansible syntax..."
 	@if [ -f "tasks/main.yml" ]; then \
-		ansible-playbook --syntax-check -i localhost, tasks/main.yml || echo "⚠️  Syntax check requires a playbook wrapper"; \
+		echo "✅ Ansible role tasks found - using ansible-lint for validation"; \
+		/bin/zsh -c "source ~/.zshrc && uvx ansible-lint tasks/main.yml" || echo "⚠️  Install ansible-lint for syntax checking"; \
 	else \
 		echo "ℹ️  No tasks/main.yml found"; \
 	fi
@@ -119,7 +121,7 @@ format-check: ## Check code formatting
 test: ## Run tests
 	@echo "🧪 Running tests..."
 	@if [ -f "pyproject.toml" ] && grep -q "pytest" pyproject.toml; then \
-		/bin/zsh -c "source ~/.zshrc && uvx pytest"; \
+		/bin/zsh -c "source ~/.zshrc && poetry run pytest"; \
 	elif [ -f "package.json" ] && grep -q "test" package.json; then \
 		npm test; \
 	else \
@@ -130,7 +132,7 @@ test: ## Run tests
 test-coverage: ## Run tests with coverage
 	@echo "🧪 Running tests with coverage..."
 	@if [ -f "pyproject.toml" ] && grep -q "pytest" pyproject.toml; then \
-		/bin/zsh -c "source ~/.zshrc && uvx pytest -v --cov --cov-report=html --cov-report=term"; \
+		/bin/zsh -c "source ~/.zshrc && poetry run pytest -v --cov --cov-report=html --cov-report=term"; \
 	elif [ -f "package.json" ] && grep -q "test" package.json; then \
 		npm run test:coverage || npm test; \
 	else \

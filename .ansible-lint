@@ -1,0 +1,36 @@
+---
+# Ansible Lint Configuration
+# https://ansible-lint.readthedocs.io/
+
+# Skip Galaxy role naming requirements for private roles
+skip_list:
+  - role-name
+
+# Enable specific rules for quality
+enable_list:
+  - fqcn-builtins
+  - no-log-password
+  - no-same-owner
+
+# Configure file patterns for warnings only
+warn_list:
+  - experimental
+
+# Exclude non-Ansible YAML files from linting
+exclude_paths:
+  - .github/
+  - docs/
+  - .pre-commit-config.yaml
+  - pyproject.toml
+  - .secrets.baseline
+
+# Only lint Ansible-specific files
+kinds:
+  - yaml: "**/*.{yml,yaml}"
+  - playbook: "**/playbook*.{yml,yaml}"
+  - playbook: "**/site.{yml,yaml}"
+  - tasks: "**/tasks/**/*.{yml,yaml}"
+  - handlers: "**/handlers/**/*.{yml,yaml}"
+  - vars: "**/vars/**/*.{yml,yaml}"
+  - defaults: "**/defaults/**/*.{yml,yaml}"
+  - meta: "**/meta/**/*.{yml,yaml}"

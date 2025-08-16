@@ -1,26 +1,40 @@
 # Project Structure
 
-This document outlines the directory structure and key files in the `[PROJECT_NAME]` project.
+This document outlines the directory structure and key files in the `ansible.role.prep` project.
 
 ## Root Directory Structure
 
 ```text
-[PROJECT_NAME]/
+ansible.role.prep/
 ├── README.md                        # Project overview and usage
 ├── makefile                         # Build and development targets
 ├── .editorconfig                    # Editor consistency settings
 ├── .gitignore                       # Git ignore patterns
 ├── .pre-commit-config.yaml          # Quality automation hooks
-├── [Technology-specific files]      # pyproject.toml, Cargo.toml, package.json, etc.
+├── pyproject.toml                   # Poetry dependencies and configuration
 ├── docs/                            # Sphinx documentation
-│   ├── conf.py
-│   ├── index.md
-│   ├── project-structure.md
-│   ├── deployment.md
-│   ├── _static/
-│   └── _templates/
-├── src/ or lib/                     # Source code (structure varies by technology)
-└── tests/                           # Test files
+│   ├── conf.py                      # Sphinx configuration with SplendidCube branding
+│   ├── index.md                     # Documentation entry point
+│   ├── project-structure.md         # Project structure guide (this file)
+│   ├── deployment.md                # Role usage and deployment guide
+│   ├── _static/                     # Static assets (CSS, images, etc.)
+│   └── _templates/                  # Custom Sphinx templates
+├── tasks/                           # Ansible role tasks
+│   └── main.yml                     # Main role tasks
+├── handlers/                        # Ansible handlers
+├── vars/                            # Role variables
+├── defaults/                        # Default variables
+├── templates/                       # Jinja2 templates
+├── files/                           # Static files
+├── library/                         # Custom Ansible modules
+│   ├── generate_model.py            # Main custom module
+│   └── tests/                       # Unit tests
+├── helpers/                         # Helper classes for module development
+│   ├── aws_resource_model.py        # AWS resource modeling base class
+│   └── cfn_builder.py               # CloudFormation template generation
+├── meta/                            # Ansible Galaxy metadata
+│   └── main.yml                     # Role metadata and dependencies
+└── tests/                           # Additional test files
 ```
 
 ## Key Files and Directories
@@ -43,29 +57,10 @@ This document outlines the directory structure and key files in the `[PROJECT_NA
 - **MyPy**: Type checking (optional)
 - **Sphinx**: Documentation generation
 
-### Rust Projects
-
-- **Cargo**: Build system and package manager
-- **clippy**: Linting
-- **rustfmt**: Code formatting
-- **cargo test**: Testing
-
-### JavaScript/TypeScript Projects
-
-- **npm/yarn**: Package management
-- **ESLint**: Linting
-- **Prettier**: Code formatting
-- **Jest/Vitest**: Testing
-
 ### Ansible Projects
 
 - **ansible-lint**: Role and playbook validation
 - **molecule**: Testing framework (when applicable)
-
-### Docker Projects
-
-- **hadolint**: Dockerfile linting
-- **docker-compose**: Multi-container orchestration
 
 ## Development and Quality Tools
 
@@ -93,8 +88,6 @@ Use the `makefile` for technology-agnostic targets:
 ## Environment Management
 
 - **Python**: Poetry with uvx for tool execution
-- **Rust**: Cargo manages everything
-- **JavaScript/TypeScript**: npm/yarn for dependencies
 - **Editor consistency**: EditorConfig for all file types
 
 ## Quality Assurance

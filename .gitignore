@@ -114,6 +114,9 @@ dist
 ansible/*.retry
 ansible/.vault_pass
 *.retry
+.ansible/
+.ansible/roles/
+collections/
 
 # ------------------------------------------------------------------------------
 # Docker

@@ -1,8 +1,9 @@
+---
 galaxy_info:
-  author: Author Name (@authorhandle)
-  description: Template for all SplendidCube Ansible Roles
+  author: David Dixon (@davidjdixon)
+  description: Preparation role for delivering initial capability for building out AWS services and infrastructure
   company: SplendidCube
   license: private
-  min_ansible_version: 2.5
+  min_ansible_version: "2.5"
   galaxy_tags: []
 dependencies: []

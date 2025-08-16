@@ -1,21 +1,21 @@
-# [PROJECT_NAME]
+# ansible.role.prep
 
-Welcome to the documentation for `[PROJECT_NAME]`. [Brief description of what this project does and its main purpose].
+Welcome to the documentation for `ansible.role.prep`. This Ansible role provides initial preparation and capability delivery for AWS infrastructure automation.
 
 ## Overview
 
 This project provides:
 
-- [Key feature 1]
-- [Key feature 2]
-- [Key feature 3]
+- **Infrastructure Preparation**: Automatic checks and validation before infrastructure deployment
+- **Custom Model Execution**: The `model_generate` module for executing custom Python models within Ansible
+- **AWS Integration**: Session validation and authentication management for AWS infrastructure
 
 ## Quick Start
 
-1. **Prerequisites**: [List main dependencies]
-2. **Initialize Environment**: `make init`
-3. **Run Quality Checks**: `make quality`
-4. **Generate Documentation**: `make docs`
+1. **Prerequisites**: Python 3.11+, AWS CLI, Make, Ansible 2.9+, Troposphere
+1. **Initialize Environment**: `make init`
+1. **Run Quality Checks**: `make quality`
+1. **Generate Documentation**: `make docs`
 
 ## Documentation Structure
 
@@ -25,13 +25,14 @@ This project provides:
 
 project-structure
 deployment
+src
 ```
 
 ## Project Information
 
-- **Repository**: [PROJECT_NAME] (Private)
+- **Repository**: ansible.role.prep (Private)
 - **Owner**: SplendidCube
-- **Technology Stack**: [Main technologies used]
+- **Technology Stack**: Ansible, Python, Troposphere, AWS CloudFormation
 - **License**: Proprietary
 
 ## Development

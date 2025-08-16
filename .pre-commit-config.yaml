@@ -1,10 +1,11 @@
+---
 # Pre-commit configuration for SplendidCube projects
 # See https://pre-commit.com for more information
 
 repos:
   # Python code quality (using Ruff for speed and consolidation)
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.8
+    rev: v0.12.9
     hooks:
       - id: ruff
         args: [--fix]
@@ -26,7 +27,7 @@ repos:
 
   # JavaScript/TypeScript/Vue.js code quality
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v9.15.0
+    rev: v9.33.0
     hooks:
       - id: eslint
         name: eslint-js-ts-vue
@@ -34,31 +35,35 @@ repos:
         additional_dependencies:
           - eslint@9.15.0
           - eslint-plugin-vue@9.30.0
-          - '@typescript-eslint/eslint-plugin@8.15.0'
-          - '@typescript-eslint/parser@8.15.0'
+          - "@typescript-eslint/eslint-plugin@8.15.0"
+          - "@typescript-eslint/parser@8.15.0"
 
-  # Prettier for JavaScript/TypeScript/Vue/CSS/HTML
+  # Prettier for JavaScript/TypeScript/Vue/CSS/HTML/YAML (non-Ansible)
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
-        name: prettier-js-ts-vue-css-html
+        name: prettier-js-ts-vue-css-html-yaml
         files: \.(js|ts|vue|css|scss|html|json|ya?ml)$
+        exclude: ^(tasks|handlers|vars|defaults|meta|playbooks?|site\.ya?ml|.*playbook.*\.ya?ml|inventory.*\.ya?ml|group_vars|host_vars)/.*\.ya?ml$
         additional_dependencies:
           - prettier@3.3.3
 
   # Ansible linting
   - repo: https://github.com/ansible/ansible-lint
-    rev: v24.12.2
+    rev: v25.8.1
     hooks:
       - id: ansible-lint
         name: ansible-lint
-        files: \.(yml|yaml)$
+        files: ^(tasks|handlers|vars|defaults|meta|playbooks?|site\.ya?ml|.*playbook.*\.ya?ml|inventory.*\.ya?ml|group_vars|host_vars)/.*\.ya?ml$|^.*\.(yml|yaml)$
+        exclude: ^(\.github|docs|tests)/.*\.ya?ml$
         args: [--fix]
+        additional_dependencies:
+          - ansible-core>=2.12.0
 
   # Docker linting
   - repo: https://github.com/hadolint/hadolint
-    rev: v2.12.0
+    rev: v2.13.1-beta
     hooks:
       - id: hadolint-docker
         name: hadolint-dockerfile
@@ -77,7 +82,7 @@ repos:
 
   # General file formatting and validation
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
         name: trim-trailing-whitespace
@@ -107,21 +112,20 @@ repos:
     hooks:
       - id: detect-secrets
         name: detect-secrets
-        args: ['--baseline', '.secrets.baseline']
+        args: ["--baseline", ".secrets.baseline"]
 
   # Conventional commits validation
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v3.6.0
+    rev: v4.2.0
     hooks:
       - id: conventional-pre-commit
         name: conventional-commits
         stages: [commit-msg]
-        args: [
-          "--strict",
-          "--types=feat,fix,docs,style,refactor,test,chore,ci,build,perf,revert",
-          "--scopes-regex=^[a-z0-9-]+$",
-          "--subject-regex=^:[a-z0-9_+-]+: [a-z].*$"
-        ]
+        args:
+          - "--strict"
+          - "--types=feat,fix,docs,style,refactor,test,chore,ci,build,perf,revert"
+          - "--scopes-regex=^[a-z0-9-]+$"
+          - "--subject-regex=^:[a-z0-9_+-]+: [a-z].*$"
 
 # Configuration for specific tools
 ci:
