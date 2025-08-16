@@ -1,0 +1,139 @@
+# Private project configuration for SplendidCube
+# Do not publish to PyPI or any public repository
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "[PROJECT_NAME]"
+version = "0.1.0"
+description = "[Brief description of the project]"
+readme = "README.md"
+authors = ["SplendidCube"]
+license = "Proprietary"
+package-mode = false
+keywords = ["[keyword1]", "[keyword2]", "[keyword3]"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Natural Language :: English",
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+# Add project-specific dependencies here
+
+[tool.poetry.group.dev.dependencies]
+# Core development tools
+ruff = "*"
+pytest = "*"
+pytest-cov = "*"
+pre-commit = "*"
+bandit = "*"
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "*"
+sphinx-wagtail-theme = "*"
+myst-parser = "*"
+
+[tool.ruff]
+# Ruff configuration - replaces flake8, isort, and Black
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (import sorting)
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "ARG", # flake8-unused-arguments
+    "SIM", # flake8-simplify
+    "N",   # pep8-naming
+    "S",   # flake8-bandit (security)
+]
+
+# Rules to ignore
+ignore = [
+    "E203",  # whitespace before ':' (conflicts with ruff format)
+    "E501",  # line too long (handled by ruff format)
+    "S101",  # assert statements (common in tests)
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Allow unused imports in __init__.py files
+"__init__.py" = ["F401"]
+# Allow print statements and assert in scripts and tests
+"scripts/*.py" = ["T201", "S101"]
+"tests/*.py" = ["S101", "ARG001", "S106"]
+"**/tests/**/*.py" = ["S101", "ARG001", "S106"]
+
+[tool.ruff.format]
+# Use double quotes for strings
+quote-style = "double"
+# Indent with spaces
+indent-style = "space"
+# Respect magic trailing comma
+skip-magic-trailing-comma = false
+# Automatically detect line ending
+line-ending = "auto"
+
+[tool.bandit]
+exclude_dirs = ["tests", "test_*.py", "*_test.py"]
+skips = ["B101"]  # Skip assert_used test
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers --strict-config --cov-report=term-missing"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "tests/*",
+    ".venv/*",
+    "build/*",
+    "dist/*",
+    "*.egg-info/*",
+    "__pycache__/*",
+    ".pytest_cache/*",
+    ".ruff_cache/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+fail_under = 80

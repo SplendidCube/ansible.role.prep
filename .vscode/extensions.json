@@ -1,0 +1,62 @@
+{
+    "recommendations": [
+        // AI & Copilot
+        "github.copilot",
+        "github.copilot-chat",
+        "automatalabs.copilot-mcp",
+        "ms-vscode.vscode-websearchforcopilot",
+
+        // Git & Version Control
+        "github.vscode-pull-request-github",
+        "github.vscode-github-actions",
+        "donjayamanne.githistory",
+        "vivaxy.vscode-conventional-commits",
+        "codezombiech.gitignore",
+        "piotrpalarz.vscode-gitignore-generator",
+
+        // Core Development
+        "editorconfig.editorconfig",
+        "streetsidesoftware.code-spell-checker",
+        "christian-kohler.path-intellisense",
+
+        // Documentation & Markdown
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        "bierner.markdown-mermaid",
+
+        // Language Support
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
+        "dotjoshjohnson.xml",
+        "mikestead.dotenv",
+
+        // Formatting & Utilities
+        "esbenp.prettier-vscode",
+        "richie5um2.vscode-sort-json",
+        "fvclaus.sort-json-array",
+        "tyriar.sort-lines",
+        "britesnow.vscode-toggle-quotes",
+        "formulahendry.auto-close-tag",
+        "formulahendry.auto-rename-tag",
+
+        // Visual Enhancements
+        "pkief.material-icon-theme",
+        "oderwat.indent-rainbow",
+        "ibm.output-colorizer",
+        "mechatroner.rainbow-csv",
+        "bierner.emojisense",
+
+        // Security & Quality
+        "snyk-security.snyk-vulnerability-scanner",
+        "elagil.pre-commit-helper",
+
+        // Workspace Management
+        "design4pro.workspace-manager"
+    ],
+    "unwantedRecommendations": [
+        "ms-python.pylint",
+        "ms-python.flake8",
+        "ms-python.isort",
+        "ms-python.black-formatter"
+    ]
+}

@@ -1,0 +1,6 @@
+# This role contains checks and any preparation required for ansible projects
+- name: Ansible version checking
+  assert:
+    that: ansible_version.full is version_compare({{ ansible_min_version | default('2.14') }}, '>=')
+    fail_msg: Ansible v{{ ansible_min_version | default('2.14') }} or above is required for this playbook, please update.
+  tags: always

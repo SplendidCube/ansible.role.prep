@@ -1,0 +1,252 @@
+/* SplendidCube Professional Theme Override */
+/* Minimal, professional theme customization - only necessary changes */
+
+/* ================================================================
+   COLOR VARIABLES
+   ================================================================ */
+
+:root {
+  /* Professional blue palette matching SplendidCube branding */
+  --splendidcube-primary: #1e3a8a;      /* Deep navy blue for headers */
+  --splendidcube-secondary: #3b82f6;    /* Medium blue for accents */
+  --splendidcube-text: #1f2937;         /* Dark text for readability */
+}
+
+/* ================================================================
+   BOOTSTRAP PRIMARY COLOR OVERRIDE
+   ================================================================ */
+
+/* Replace default purple with professional navy blue */
+:root {
+  --bs-primary: var(--splendidcube-primary) !important;
+  --bs-primary-rgb: 30, 58, 138 !important;
+}
+
+/* Header background */
+.bg-primary {
+  background-color: var(--splendidcube-primary) !important;
+}
+
+/* Primary buttons */
+.btn-primary {
+  background-color: var(--splendidcube-primary) !important;
+  border-color: var(--splendidcube-primary) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--splendidcube-secondary) !important;
+  border-color: var(--splendidcube-secondary) !important;
+}
+
+/* ================================================================
+   LOGO INTEGRATION
+   ================================================================ */
+
+/* Ensure logo has transparent background */
+.navbar-brand {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* ================================================================
+   CODE BLOCKS AND SYNTAX HIGHLIGHTING
+   ================================================================ */
+
+/* Code block containers - light background with dark text */
+pre {
+  background-color: #f8fafc !important; /* Very light blue-grey background */
+  color: #1f2937 !important; /* Dark grey text for excellent readability */
+  border: 1px solid #e5e7eb !important; /* Light grey border */
+  border-radius: 6px !important;
+  padding: 16px !important;
+  font-size: 14px !important;
+}
+
+/* Syntax highlighted code blocks */
+.highlight,
+.codehilite {
+  background-color: #f8fafc !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 6px !important;
+}
+
+/* Inline code */
+code {
+  background-color: #e5e7eb !important; /* Light grey background */
+  color: #1f2937 !important; /* Dark text */
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  font-size: 0.9em !important;
+}
+
+/* Syntax highlighting colors - darker versions for better readability */
+pre .l,     /* Literals */
+pre .s,     /* Strings */
+pre .s1,    /* String single quote */
+pre .s2 {   /* String double quote */
+  color: #dc2626 !important; /* Dark red instead of light orange */
+}
+
+pre .n,     /* Names */
+pre .nb,    /* Name builtin */
+pre .nc,    /* Name class */
+pre .nf,    /* Name function */
+pre .nt {   /* Name tag */
+  color: #1f2937 !important; /* Dark grey for names */
+}
+
+pre .k,     /* Keywords */
+pre .kn,    /* Keyword namespace */
+pre .kc {   /* Keyword constant */
+  color: #7c3aed !important; /* Dark purple for keywords */
+}
+
+pre .m,     /* Numbers */
+pre .mi,    /* Number integer */
+pre .mf {   /* Number float */
+  color: #b45309 !important; /* Dark orange for numbers */
+}
+
+pre .c,     /* Comments */
+pre .c1,    /* Comment single line */
+pre .cm {   /* Comment multiline */
+  color: #6b7280 !important; /* Medium grey for comments */
+  font-style: italic !important;
+}
+
+pre .o,     /* Operators */
+pre .ow {   /* Operator word */
+  color: #059669 !important; /* Dark green for operators */
+}
+
+pre .p {    /* Punctuation */
+  color: #374151 !important; /* Dark grey for punctuation */
+}
+
+pre .bp {   /* Name builtin pseudo */
+  color: #4f46e5 !important; /* Dark blue for built-ins */
+}
+
+pre .err {  /* Error */
+  color: #dc2626 !important; /* Dark red for errors */
+  background-color: #fef2f2 !important; /* Light red background */
+}
+
+/* ================================================================
+   DARK MODE OVERRIDES
+   ================================================================ */
+
+/* Dark mode body - professional dark blue with SplendidCube light blue text */
+body.theme-dark {
+  background-color: #0f172a !important; /* Very dark blue-grey (darker than header) */
+  color: #bddef5 !important; /* SplendidCube light blue for text */
+}
+
+/* Dark mode code blocks */
+body.theme-dark pre {
+  background-color: #1e293b !important; /* Dark blue-grey background */
+  color: #bddef5 !important; /* Light blue text */
+  border-color: #334155 !important; /* Medium dark border */
+}
+
+body.theme-dark .highlight,
+body.theme-dark .codehilite {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.theme-dark code {
+  background-color: #334155 !important; /* Darker background for inline code */
+  color: #bddef5 !important; /* Light blue text */
+}
+
+/* Dark mode syntax highlighting - adjusted for dark background */
+body.theme-dark pre .l,
+body.theme-dark pre .s,
+body.theme-dark pre .s1,
+body.theme-dark pre .s2 {
+  color: #fca5a5 !important; /* Light red for strings */
+}
+
+body.theme-dark pre .k,
+body.theme-dark pre .kn,
+body.theme-dark pre .kc {
+  color: #c4b5fd !important; /* Light purple for keywords */
+}
+
+body.theme-dark pre .m,
+body.theme-dark pre .mi,
+body.theme-dark pre .mf {
+  color: #fed7aa !important; /* Light orange for numbers */
+}
+
+body.theme-dark pre .c,
+body.theme-dark pre .c1,
+body.theme-dark pre .cm {
+  color: #94a3b8 !important; /* Medium grey for comments */
+}
+
+body.theme-dark pre .o,
+body.theme-dark pre .ow {
+  color: #86efac !important; /* Light green for operators */
+}
+
+body.theme-dark pre .n,
+body.theme-dark pre .nb,
+body.theme-dark pre .nc,
+body.theme-dark pre .nf,
+body.theme-dark pre .nt {
+  color: #bddef5 !important; /* SplendidCube light blue for names */
+}
+
+body.theme-dark pre .bp {
+  color: #7dcaf1 !important; /* SplendidCube medium blue for built-ins */
+}
+
+body.theme-dark pre .p {
+  color: #94a3b8 !important; /* Medium grey for punctuation */
+}
+
+/* Dark mode input elements */
+body.theme-dark .input-group-text.bg-white {
+  background-color: #1e3a8a !important; /* Same as header blue for consistency */
+  color: #bddef5 !important; /* SplendidCube light blue text */
+  border-color: #334155 !important; /* Consistent with other dark elements */
+}
+
+body.theme-dark .form-control {
+  color: #bddef5 !important; /* SplendidCube light blue text */
+  background-color: #1e3a8a !important; /* Same navy blue as input-group-text for consistency */
+  border-color: #334155 !important; /* Medium dark border */
+}
+
+/* Dark mode links - lighter colors for contrast */
+body.theme-dark a {
+  color: #7dcaf1 !important; /* SplendidCube medium blue for visibility */
+  text-decoration-color: #94a3b8 !important; /* Light grey underline */
+}
+
+body.theme-dark a:hover {
+  color: #bddef5 !important; /* SplendidCube light blue on hover */
+  text-decoration-color: #bddef5 !important; /* Matching underline on hover */
+}
+
+/* Hide the "Edit on GitHub" button - points to theme repo, not needed */
+a[href*="sphinx_wagtail_theme"] {
+  display: none !important;
+}
+
+/* ================================================================
+   LINK COLORS
+   ================================================================ */
+
+/* Content links */
+a {
+  color: var(--splendidcube-primary) !important;
+  text-decoration-color: #6b7280 !important; /* Professional grey underline */
+}
+
+a:hover {
+  color: var(--splendidcube-secondary) !important;
+  text-decoration-color: var(--splendidcube-secondary) !important; /* Blue underline on hover */
+}
