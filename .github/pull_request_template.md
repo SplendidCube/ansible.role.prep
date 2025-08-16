@@ -39,7 +39,7 @@ List any components that will be created, modified, or deleted:
 - [ ] Pre-commit configuration
 - [ ] Quality tool configuration
 - [ ] VS Code settings
-- [ ] Other: \_\_\_\_\_\_\_\_\_\_\_
+- [ ] Other
 
 ## Usage Notes
 
