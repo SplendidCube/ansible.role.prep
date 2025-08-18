@@ -6,9 +6,10 @@ on:
     branches: [master, development]
   push:
     branches: [master, development]
+  workflow_dispatch:
 jobs:
   validate:
-    name: Validate Project
+    name: Validation
     runs-on: ubuntu-latest
     strategy:
       matrix:
