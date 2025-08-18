@@ -51,20 +51,3 @@ jobs:
 
       - name: Run tests
         run: poetry run python -m pytest -v --tb=short
-
-      - name: Set validation status
-        if: always()
-        run: |
-          if [ "${{ job.status }}" == "success" ]; then
-            STATE="success"
-            DESCRIPTION="All validation checks passed"
-          else
-            STATE="failure"
-            DESCRIPTION="Validation checks failed"
-          fi
-
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            "https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }}" \
-            -d "{\"state\":\"$STATE\",\"description\":\"$DESCRIPTION\",\"context\":\"validation\"}"
