@@ -61,42 +61,6 @@ make docs           # Generate documentation
 make clean          # Clean up environment
 ```
 
-## Project Structure
-
-```text
-/
-├── tasks/                    # Ansible role tasks
-│   └── main.yml              # Main role tasks
-├── handlers/                 # Ansible handlers
-├── vars/                     # Role variables
-├── defaults/                 # Default variables
-├── templates/                # Jinja2 templates
-├── files/                    # Static files
-├── library/                  # Custom Ansible modules
-│   └── generate_model.py     # Main module for executing custom models
-├── helpers/                  # Python helper classes
-│   ├── aws_resource_model.py # Base class for AWS resource models
-│   └── cfn_builder.py        # CloudFormation template builder
-├── tests/                    # Test suite (pytest structure)
-│   ├── library/              # Tests for custom Ansible modules
-│   ├── helpers/              # Tests for helper classes
-│   └── fixtures/             # Test fixtures and sample data
-├── docs/                     # Sphinx documentation (MyST Markdown)
-│   ├── conf.py               # Sphinx config (Wagtail theme, SplendidCube branding)
-│   ├── index.md              # Documentation entry page (table of contents)
-│   ├── project-structure.md  # Project layout and descriptions
-│   ├── deployment.md         # Deployment and CI/CD guidance
-│   ├── _static/              # Static assets (logo.svg, custom.css)
-│   └── _templates/           # Custom Sphinx templates
-├── .github/                  # GitHub workflows and templates
-├── .vscode/                  # VS Code settings
-├── makefile                  # Development automation
-├── .editorconfig             # Editor configuration
-├── .gitignore                # Git ignore patterns
-├── .pre-commit-config.yaml   # Pre-commit hooks
-└── README.md                 # This file
-```
-
 ## Ansible Role Capabilities
 
 This Ansible Role provides the following key capabilities:
