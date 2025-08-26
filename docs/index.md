@@ -1,4 +1,4 @@
-# ansible.role.prep
+# Ansible Role :: Prep
 
 Welcome to the documentation for `ansible.role.prep`. This Ansible role provides initial preparation and capability delivery for AWS infrastructure automation.
 
@@ -12,7 +12,12 @@ This project provides:
 
 ## Quick Start
 
-1. **Prerequisites**: Python 3.11+, AWS CLI, Make, Ansible 2.9+, Troposphere
+1. **Prerequisites**:
+   - Python 3.11+
+   - AWS CLI
+   - Make
+   - Ansible 2.9+
+   - Troposphere
 1. **Initialize Environment**: `make init`
 1. **Run Quality Checks**: `make quality`
 1. **Generate Documentation**: `make docs`
@@ -32,7 +37,11 @@ src
 
 - **Repository**: ansible.role.prep (Private)
 - **Owner**: SplendidCube
-- **Technology Stack**: Ansible, Python, Troposphere, AWS CloudFormation
+- **Technology Stack**:
+  - Ansible
+  - Python
+  - Troposphere
+  - AWS CloudFormation
 - **License**: Proprietary
 
 ## Development

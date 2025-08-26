@@ -1,4 +1,4 @@
-# ansible.role.prep
+# Ansible Role :: Prep
 
 Ansible preparation role for AWS infrastructure automation
 
@@ -47,58 +47,59 @@ This Ansible role provides initial preparation and capability delivery for AWS i
 ### Common Commands
 
 ```bash
-make help              # Show all available commands
-make init              # Initialize development environment
-make install           # Install dependencies
-make dev               # Install development dependencies
-make lint              # Run linting checks (Python + Ansible)
-make lint-fix          # Fix auto-fixable issues
-make format            # Format code
-make test              # Run tests
-make test-coverage     # Run tests with coverage
-make ansible-syntax    # Check Ansible syntax
-make docs              # Generate documentation
-make clean             # Clean up environment
+make help           # Show all available commands
+make init           # Initialize development environment
+make install        # Install dependencies
+make dev            # Install development dependencies
+make lint           # Run linting checks
+make lint-fix       # Fix auto-fixable issues
+make format         # Format code
+make test           # Run tests
+make test-coverage  # Run tests with coverage
+make ansible-syntax # Check Ansible syntax
+make docs           # Generate documentation
+make clean          # Clean up environment
 ```
 
 ## Project Structure
 
 ```text
-ansible.role.prep/
+/
 ├── tasks/                    # Ansible role tasks
 │   └── main.yml              # Main role tasks
-├── handlers/                 # Ansible handlers (if needed)
+├── handlers/                 # Ansible handlers
 ├── vars/                     # Role variables
 ├── defaults/                 # Default variables
-├── templates/                # Jinja2 templates (if needed)
-├── files/                    # Static files (if needed)
+├── templates/                # Jinja2 templates
+├── files/                    # Static files
 ├── library/                  # Custom Ansible modules
-│   ├── generate_model.py     # Main module for executing custom models
-│   └── [custom_module].py    # Additional custom modules
+│   └── generate_model.py     # Main module for executing custom models
 ├── helpers/                  # Python helper classes
 │   ├── aws_resource_model.py # Base class for AWS resource models
-│   ├── cfn_builder.py        # CloudFormation template builder
-│   └── [specific_helper].py  # Specialized helper classes
+│   └── cfn_builder.py        # CloudFormation template builder
 ├── tests/                    # Test suite (pytest structure)
 │   ├── library/              # Tests for custom Ansible modules
 │   ├── helpers/              # Tests for helper classes
 │   └── fixtures/             # Test fixtures and sample data
-├── docs/                     # Documentation
-│   ├── index.md              # Documentation entry point
-│   ├── project-structure.md  # Project structure guide
-│   └── deployment.md         # Role usage and deployment guide
-├── meta/                     # Ansible Galaxy metadata
-│   └── main.yml              # Role metadata and dependencies
-├── pyproject.toml            # Python project configuration
-├── __init__.py               # Python package marker
-├── LICENSE                   # Project license
-├── README.md                 # This file
-└── makefile                  # Development automation targets
+├── docs/                     # Sphinx documentation (MyST Markdown)
+│   ├── conf.py               # Sphinx config (Wagtail theme, SplendidCube branding)
+│   ├── index.md              # Documentation entry page (table of contents)
+│   ├── project-structure.md  # Project layout and descriptions
+│   ├── deployment.md         # Deployment and CI/CD guidance
+│   ├── _static/              # Static assets (logo.svg, custom.css)
+│   └── _templates/           # Custom Sphinx templates
+├── .github/                  # GitHub workflows and templates
+├── .vscode/                  # VS Code settings
+├── makefile                  # Development automation
+├── .editorconfig             # Editor configuration
+├── .gitignore                # Git ignore patterns
+├── .pre-commit-config.yaml   # Pre-commit hooks
+└── README.md                 # This file
 ```
 
-## Capabilities
+## Ansible Role Capabilities
 
-This role provides the following key capabilities:
+This Ansible Role provides the following key capabilities:
 
 1. **Infrastructure Preparation**: Automatic checks and validation before infrastructure deployment
 1. **Custom Model Execution**: The `generate_model` module for executing custom Python models within Ansible
@@ -106,9 +107,9 @@ This role provides the following key capabilities:
 1. **AWS Session Validation**: Ensures proper AWS credentials and session setup
 1. **CloudFormation Integration**: Specialized support for Troposphere-based template generation
 
-## Usage
+## Ansible Role Usage
 
-### Basic Role Integration
+### Basic Integration
 
 Include the role in your playbook. Ensure the prepare role is the **first role** used by the playbook before any tasks are defined:
 
@@ -117,7 +118,7 @@ Include the role in your playbook. Ensure the prepare role is the **first role**
 - hosts: [target_hosts]
   roles:
     - ansible.role.prep  # Must be first
-    - other.roles
+    - [other.roles]
   vars:
     # Role-specific variables
 ```
@@ -130,16 +131,16 @@ Key variables that can be configured:
 | -------------------------- | ------- | ---------------------------------------------- |
 | `aws_require_assumed_role` | `true`  | Require AWS role assumption for authentication |
 
-### Custom Modules
+### Custom Modules/Models
 
 The role includes the `generate_model` custom module:
 
 ```yaml
 - generate_model:
     model: models/my_model
-    description: My model
+    description: My Model
     parameters:
-      param1: var1
+      param1: var1 # vars defined in custom model
 ```
 
 ### Advanced Configuration
@@ -163,7 +164,7 @@ aws_require_assumed_role: true   # require role assumption
 1. Ensure all quality checks pass: `make quality`
 1. Run tests: `make test`
 1. Update documentation as needed
-1. Follow established patterns for tasks, handlers, and custom modules
+1. Follow established code patterns and conventions
 1. Test role in isolation and with dependent roles
 
 ## Development Standards

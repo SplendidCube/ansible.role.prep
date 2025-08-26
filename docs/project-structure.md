@@ -5,36 +5,45 @@ This document outlines the directory structure and key files in the `ansible.rol
 ## Root Directory Structure
 
 ```text
-ansible.role.prep/
-├── README.md                        # Project overview and usage
-├── makefile                         # Build and development targets
-├── .editorconfig                    # Editor consistency settings
-├── .gitignore                       # Git ignore patterns
-├── .pre-commit-config.yaml          # Quality automation hooks
-├── pyproject.toml                   # Poetry dependencies and configuration
-├── docs/                            # Sphinx documentation
-│   ├── conf.py                      # Sphinx configuration with SplendidCube branding
-│   ├── index.md                     # Documentation entry point
-│   ├── project-structure.md         # Project structure guide (this file)
-│   ├── deployment.md                # Role usage and deployment guide
-│   ├── _static/                     # Static assets (CSS, images, etc.)
-│   └── _templates/                  # Custom Sphinx templates
-├── tasks/                           # Ansible role tasks
-│   └── main.yml                     # Main role tasks
-├── handlers/                        # Ansible handlers
-├── vars/                            # Role variables
-├── defaults/                        # Default variables
-├── templates/                       # Jinja2 templates
-├── files/                           # Static files
-├── library/                         # Custom Ansible modules
-│   ├── generate_model.py            # Main custom module
-│   └── tests/                       # Unit tests
-├── helpers/                         # Helper classes for module development
-│   ├── aws_resource_model.py        # AWS resource modeling base class
-│   └── cfn_builder.py               # CloudFormation template generation
-├── meta/                            # Ansible Galaxy metadata
-│   └── main.yml                     # Role metadata and dependencies
-└── tests/                           # Additional test files
+/
+├── .github/                     # GitHub repository settings and Workflows
+│   ├── workflows/               # Workflow definitions
+│   │   ├── validate.yml         # Basic validation checks workflow
+│   │   └── deploy-[TEMPLATE: env | kebab-case].yml # Deployment Workflow for promoting the project to [TEMPLATE: env | kebab-case] environment
+│   ├── copilot-instructions.md  # Copilot INSTRUCTIONS for the project
+│   ├── pull_request_template.md # Template for PR description in GitHub
+│   └── settings.yml             # GitHub repository settings
+├── .vscode/                     # VSCode local environment settings
+│   ├── extensions.json          # Recommended plugins for this project
+│   └── settings.json            # Project-specific settings for this project
+├── docs/                        # Sphinx documentation (MyST Markdown)
+│   ├── _static/                 # Static assets (logo.svg, custom.css)
+│   ├── _templates/              # Custom Sphinx templates
+│   ├── conf.py                  # Sphinx config (Wagtail theme, SplendidCube branding)
+│   ├── index.md                 # Documentation entry page (table of contents)
+│   ├── project-structure.md     # Project layout and descriptions
+│   └── deployment.md            # Deployment and CI/CD guidance
+├── helpers/                     # Helper classes for module development
+│   ├── aws_resource_model.py    # AWS resource modeling base class
+│   └── cfn_builder.py           # CloudFormation template generation
+├── library/                     # Custom Ansible modules
+│   ├── generate_model.py        # Main custom module
+│   └── tests/                   # Unit tests
+├── meta/                        # Ansible Galaxy metadata
+│   └── main.yml                 # Role metadata and dependencies
+├── tasks/                       # Ansible role tasks
+│   └── main.yml                 # Main role tasks
+├── tests/                       # Test files
+├── .ansible-lint                # Ansible lint configuration
+├── .editorconfig                # Editor consistency settings
+├── .gitignore                   # Git ignore patterns
+├── .pre-commit-config.yaml      # Quality automation hooks
+├── .secrets.baseline            # Configuration to prevent secrets being committed to the repository
+├── .venv                        # VirtualEnv project name for easy identification
+├── LICENSE                      # Project license information
+├── makefile                     # Build and development targets
+├── pyproject.toml               # Python Project settings for Ansible/Python scripts
+└── README.md                    # Project overview and usage
 ```
 
 ## Key Files and Directories

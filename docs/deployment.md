@@ -17,7 +17,7 @@ The development process uses:
 
 ### 1. Initial Setup
 
-1. **Clone repository**: `git clone <repository-url>`
+1. **Clone repository**: `git clone https://github.com/SplendidCube/ansible.role.prep`
 1. **Initialize environment**: `make init`
 1. **Install pre-commit hooks**: `make pre-commit-install`
 1. **Verify setup**: `make quality`

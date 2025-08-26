@@ -2,22 +2,22 @@
 #
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
-
 import os
 import sys
+from datetime import datetime
 
 # Add paths for module autodiscovery
 sys.path.insert(0, os.path.abspath(".."))
 
 # -- Template variables for easy customization ------------------------------
-PROJECT_NAME = "ansible.role.prep"
-PROJECT_REPO = f"https://github.com/SplendidCube/{PROJECT_NAME}"
+PROJECT_NAME = "Ansible Role :: Prep"
+PROJECT_REPO = "https://github.com/SplendidCube/ansible.role.prep"
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = PROJECT_NAME
-copyright = "2025, SplendidCube"
+copyright = f"{datetime.now().year}, SplendidCube"
 author = "SplendidCube"
 release = "1.0.0"
 
